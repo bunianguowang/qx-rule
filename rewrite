@@ -1,0 +1,12 @@
+hostname =notability.com,pan.baidu.com,www.baidu.com,account.wps.*
+
+# Notability解锁订阅
+^https?:\/\/notability\.com\/subscriptions url script-response-body https://raw.githubusercontent.com/yqc007/QuantumultX/master/NotabilityProCrack.js
+[mitm] 
+
+# > 百度云盘 解锁
+https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/bdcloud.js
+//https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user url script-response-body https://raw.githubusercontent.com/TributePaulWalker/JavaScript/main/Baidu%20Cloud.js
+
+# > 金山WPS Office 解锁部分功能
+^https://account.wps.*/api/users/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js
