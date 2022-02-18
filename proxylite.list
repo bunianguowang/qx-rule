@@ -378,13 +378,13 @@ HOST,init.ess.apple.com,ProxyLite
 HOST,ocsp.pki.goog,ProxyLite
 
 
-HOST-SUFFIX,atom.io,GitHub
-HOST-SUFFIX,dependabot.com,GitHub
-HOST-SUFFIX,ghcr.io,GitHub
-HOST-SUFFIX,git.io,GitHub
-HOST-SUFFIX,myoctocat.com,GitHub
-HOST-SUFFIX,npm.community,GitHub
-HOST-SUFFIX,npmjs.com,GitHub
-HOST-SUFFIX,npmjs.org,GitHub
-HOST-SUFFIX,rawgit.com,GitHub
-HOST-KEYWORD,github,GitHub
+HOST-SUFFIX,atom.io, ProxyLite
+HOST-SUFFIX,dependabot.com, ProxyLite
+HOST-SUFFIX,ghcr.io, ProxyLite
+HOST-SUFFIX,git.io, ProxyLite
+HOST-SUFFIX,myoctocat.com, ProxyLite
+HOST-SUFFIX,npm.community, ProxyLite
+HOST-SUFFIX,npmjs.com, ProxyLite
+HOST-SUFFIX,npmjs.org, ProxyLite
+HOST-SUFFIX,rawgit.com, ProxyLite
+HOST-KEYWORD,github, ProxyLite
