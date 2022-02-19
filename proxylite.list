@@ -377,3 +377,13 @@ HOST,query.ess.apple.com,ProxyLite
 HOST,init.ess.apple.com,ProxyLite
 HOST,ocsp.pki.goog,ProxyLite
 
+host, getvpn.cn, ProxyLite
+host-suffix, npmjs.com, ProxyLite
+host-suffix, myoctocat.com, ProxyLite
+host-suffix, rawgit.com, ProxyLite
+host-suffix, git.io, ProxyLite
+host-suffix, atom.io, ProxyLite
+host, data.flurry.com, ProxyLite
+host-keyword, github, ProxyLite
+host-keyword, raw, ProxyLite
+host-keyword, githubusercontent, ProxyLite
