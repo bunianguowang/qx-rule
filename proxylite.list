@@ -579,3 +579,23 @@ host, www.fcww77.com, ProxyLite
 host, 8feichai.com, ProxyLite
 host, media-vip-s.feic55.com, ProxyLite
 host, media-vip-s.feic55.com, ProxyLite
+
+host, www.tgbak.com, ProxyLite
+host, www.v2rayssr.com, ProxyLite
+host, cdn.jsdelivr.net, ProxyLite
+host, s2.loli.net, ProxyLite
+host, misaka.rest, ProxyLite
+host-suffix, if101.tv, ProxyLite
+host-keyword, jable, ProxyLite
+host-suffix, jable.tv, ProxyLite
+host, jable.tv, ProxyLite
+host, zh.m.wikipedia.org, ProxyLite
+host, zh.wikipedia.org, ProxyLite
+host, t.co, ProxyLite
+host-suffix, twitter.com, ProxyLite
+host-suffix, twimg.com, ProxyLite
+host, mobile.twitter.com, ProxyLite
+host, twitter.com, ProxyLite
+host, yangmao.info, ProxyLite
+host, ip.bczs.net, ProxyLite
+host, hax.co.id, ProxyLite
