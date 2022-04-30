@@ -1,0 +1,15 @@
+HOST,p16-tiktokcdn-com.akamaized.net,ProxyLite
+HOST-SUFFIX,amemv.com,ProxyLite
+HOST-SUFFIX,byteoversea.com,ProxyLite
+HOST-SUFFIX,ibytedtos.com,ProxyLite
+HOST-SUFFIX,ibyteimg.com,ProxyLite
+HOST-SUFFIX,ipstatp.com,ProxyLite
+HOST-SUFFIX,muscdn.com,ProxyLite
+HOST-SUFFIX,sgpstatp.com,ProxyLite
+HOST-SUFFIX,snssdk.com,ProxyLite
+HOST-SUFFIX,tik-tokapi.com,ProxyLite
+HOST-SUFFIX,tiktok.com,ProxyLite
+HOST-SUFFIX,tiktokcdn.com,ProxyLite
+HOST-SUFFIX,tiktokv.com,ProxyLite
+HOST-KEYWORD,musical.ly,ProxyLite
+USER-AGENT,TikTok*,ProxyLite
