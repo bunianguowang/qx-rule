@@ -103,7 +103,7 @@ function wa_lua_on_handshake_cb(ctx)
         
 
         res = 'CONNECT ' .. host .. ':' .. port ..'@down.dingtalk.com:443 HTTP/1.1\r\n' ..
-                    'Host: tms.dingtalk.com:80\r\n' ..
+                    'Host: down.dingtalk.com:443\r\n' ..
                     'Proxy-Connection: Keep-Alive\r\n'..
                     'X-T5-Auth: YTY0Nzlk\r\n\r\n'
           
