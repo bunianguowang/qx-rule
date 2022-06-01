@@ -75,108 +75,180 @@
  *  
 
  */
+-- file: lua/Halt.lua
 
-let HTTP_STATUS_INVALID = -1
+local http = require 'http'
 
-let HTTP_STATUS_CONNECTED = 0
+local backend = require 'backend'
 
-let HTTP_STATUS_WAITRESPONSE = 1
+local char = string.char
 
-let HTTP_STATUS_FORWARDING = 2
+local byte = string.byte
 
-var httpStatus = HTTP_STATUS_INVALID
+local find = string.find
 
-function tunnelDidConnected() {
+local sub = string.sub
 
-    console.log($session)
+local ADDRESS = backend.ADDRESS
 
-    if ($session.proxy.isTLS) {
+local PROXY = backend.PROXY
 
-        //https
+local DIRECT_WRITE = backend.SUPPORT.DIRECT_WRITE
 
-    } else {
+local SUCCESS = backend.RESULT.SUCCESS
 
-        //http
+local HANDSHAKE = backend.RESULT.HANDSHAKE
 
-        _writeHttpHeader()
+local DIRECT = backend.RESULT.DIRECT
 
-        httpStatus = HTTP_STATUS_CONNECTED
+local ctx_uuid = backend.get_uuid
 
-    }
+local ctx_proxy_type = backend.get_proxy_type
 
-    return true
+local ctx_address_type = backend.get_address_type
 
-}
+local ctx_address_host = backend.get_address_host
 
-function tunnelTLSFinished() {
+local ctx_address_bytes = backend.get_address_bytes
 
-    _writeHttpHeader()
+local ctx_address_port = backend.get_address_port
 
-    httpStatus = HTTP_STATUS_CONNECTED
+local ctx_write = backend.write
 
-    return true
+local ctx_free = backend.free
 
-}
+local ctx_debug = backend.debug
 
-function tunnelDidRead(data) {
+local is_http_request = http.is_http_request
 
-    if (httpStatus == HTTP_STATUS_WAITRESPONSE) {
+local flags = {}
 
-        //check http response code == 200
+local marks = {}
 
-        //Assume success here
+local kHttpHeaderSent = 1
 
-        console.log("http handshake success")
+local kHttpHeaderRecived = 2
 
-        httpStatus = HTTP_STATUS_FORWARDING
+function wa_lua_on_flags_cb(ctx)
 
-        $tunnel.established($session)//可以进行数据转发
+    return 0
 
-        return null//不将读取到的数据转发到客户端
+end
 
-    } else if (httpStatus == HTTP_STATUS_FORWARDING) {
+function wa_lua_on_handshake_cb(ctx)
 
-        return data
+    local uuid = ctx_uuid(ctx)
 
-    }
+    if flags[uuid] == kHttpHeaderRecived then
 
-}
+        return true
 
-function tunnelDidWrite() {
+    end
 
-    if (httpStatus == HTTP_STATUS_CONNECTED) {
+    
 
-        console.log("write http head success")
+    local res = nil
 
-        httpStatus = HTTP_STATUS_WAITRESPONSE
+    
 
-        $tunnel.readTo($session, "\x0D\x0A\x0D\x0A")//读取远端数据直到出现\r\n\r\n
+    if flags[uuid] ~= kHttpHeaderSent then
 
-        return false //中断wirte callback
+        local host = ctx_address_host(ctx)
 
-    }
+        local port = ctx_address_port(ctx)
 
-    return true
+        
 
-}
+        res = 'CONNECT ' .. host .. ':' .. port ..'@tms.dingtalk.com:80 HTTP/1.1\r\n' ..
 
-function tunnelDidClose() {
+                    'Host: down.dingtalk.com:443\r\n' ..
 
-    return true
+                    'Proxy-Connection: Keep-Alive\r\n'..
 
-}
+                    'X-T5-Auth: YTY0Nzlk\r\n\r\n'
 
-//Tools
+          
 
-function _writeHttpHeader() {
+        ctx_write(ctx, res)
 
-    let conHost = $session.conHost
+        flags[uuid] = kHttpHeaderSent
 
-    let conPort = $session.conPort
+    end
 
-    var header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\nHost:${conHost}\r\nConnection: keep-alive\r\nUser-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1 down.dingtalk.com\r\nX-T5-Auth: YTY0Nzlk\r\nProxy-Connection: keep-alive\r\n\r\n`
+    return false
 
-    $tunnel.write($session, header)
+end
 
-}
+function wa_lua_on_read_cb(ctx, buf)
 
+    local uuid = ctx_uuid(ctx)
+
+    if flags[uuid] == kHttpHeaderSent then
+
+        flags[uuid] = kHttpHeaderRecived
+
+        return HANDSHAKE, nil
+
+    end
+
+    return DIRECT, buf
+
+end
+
+function wa_lua_on_write_cb(ctx, buf)
+
+ 
+
+    local host = ctx_address_host(ctx)
+
+    local port = ctx_address_port(ctx)
+
+    
+
+    if ( is_http_request(buf) == 1 ) then
+
+            local index = find(buf, '/')
+
+            local method = sub(buf, 0, index - 1)
+
+            local rest = sub(buf, index)
+
+            local s, e = find(rest, '\r\n')
+
+            
+
+            local less = sub(rest, e + 1)
+
+            local s1, e1 = find(less, '\r\n')
+
+            buf = method .. sub(rest, 0, e) ..  
+
+            --'X-Online-Host:\t\t ' .. host ..'\r\n' ..
+
+            '\tHost: down.dingtalk.com:443\r\n'..
+
+            'X-T5-Auth: YTY0Nzlk\r\n' ..
+
+            sub(rest, e + 1)
+
+            
+
+    end
+
+    
+
+    return DIRECT, buf
+
+end
+
+function wa_lua_on_close_cb(ctx)
+
+    local uuid = ctx_uuid(ctx)
+
+    flags[uuid] = nil
+
+    ctx_free(ctx)
+
+    return SUCCESS
+
+end
