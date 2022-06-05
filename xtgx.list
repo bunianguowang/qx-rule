@@ -1,0 +1,4 @@
+#屏蔽系统更新
+DOMAIN,mesu.apple.com,reject
+DOMAIN,gdmf.apple.com,reject
+DOMAIN,updates-http.cdn-apple.com,reject
