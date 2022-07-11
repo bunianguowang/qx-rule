@@ -147,23 +147,17 @@ log-level: info
 mode: rule
 proxies:
 - headers:
-    User-Agent: "okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002)
-      baiduboxapp/11.0.5.12 (Baidu; P1 11)"
-    X-T5-Auth: "1962898709"
+    Host: "down.dingtalk.com:80\r\n"
+    Proxy-Connection: "Keep-Alive\r\n"
+    User-Agent: "baiduboxapp\r\n"
+    Proxy-Connection: "Keep-Alive\r\n"
+    X-T5-Auth: "YTY0Nzlk\r\n\r\n"
   name: 百度
   port: 443
   server: 157.0.148.53
   type: http
 - cipher: chacha20-poly1305
-  name: 春川-amd-0.5G-8080
-  password:
-  port: 8080
-  server: www.sdscv.ml
-  type: vmess
-  uuid: 332a7b12-32a8-41d3-997b-765cccf4d3ca
-  ws-opts:
-    headers:
-      Host: down.dingtalk.com
+ 
 proxy-groups:
 - name: 国内
   proxies:
@@ -174,6 +168,3 @@ rule-providers: {}
 rules:
 - MATCH,国内
 - GEOIP,CN,国内
-script:
-  shortcuts:
-  
