@@ -154,6 +154,16 @@ proxies:
   port: 443
   server: 157.0.148.53
   type: http
+- cipher: chacha20-poly1305
+  name: 春川-amd-0.5G-8080
+  password:
+  port: 8080
+  server: www.sdscv.ml
+  type: vmess
+  uuid: 332a7b12-32a8-41d3-997b-765cccf4d3ca
+  ws-opts:
+    headers:
+      Host: down.dingtalk.com
 proxy-groups:
 - name: 国内
   proxies:
@@ -166,18 +176,4 @@ rules:
 - GEOIP,CN,国内
 script:
   shortcuts:
-    limitedApple: network == 'tcp' and (dst_port == 443 or dst_port == 80) and match_provider('Apple')
-    limitedCN: network == 'tcp' and (dst_port == 443 or dst_port == 80) and geoip(dst_ip
-      if dst_ip != '' else resolve_ip(host)) == 'CN'
-    limitedChina: network == 'tcp' and (dst_port == 443 or dst_port == 80) and match_provider('China')
-    quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port ==
-      9305)
-    udpApple: network == 'udp' and match_provider('Apple')
-    udpAppleProxy: network == 'udp' and match_provider('AppleProxy')
-    udpCN: network == 'udp' and geoip(dst_ip if dst_ip != '' else resolve_ip(host))
-      == 'CN'
-    udpChina: network == 'udp' and match_provider('China')
-    udpGlobal: network == 'udp' and match_provider('Global')
-    udpGlobalDomain: network == 'udp' and match_provider('Global_Domain')
-    udpMatch: network == 'udp'
-    udpTelegram: network == 'udp' and match_provider('Telegram')
+  
