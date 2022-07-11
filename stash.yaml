@@ -150,7 +150,6 @@ proxies:
     Host: "down.dingtalk.com:80\r\n"
     Proxy-Connection: "Keep-Alive\r\n"
     User-Agent: "baiduboxapp\r\n"
-    Proxy-Connection: "Keep-Alive\r\n"
     X-T5-Auth: "YTY0Nzlk\r\n\r\n"
   name: 百度
   port: 443
@@ -168,3 +167,5 @@ rule-providers: {}
 rules:
 - MATCH,国内
 - GEOIP,CN,国内
+script:
+  shortcuts:
