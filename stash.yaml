@@ -146,39 +146,23 @@ http:
 log-level: info
 mode: rule
 proxies:
-- headers:
-    Host: "down.dingtalk.com:80\r\n"
-    Proxy-Connection: "Keep-Alive\r\n"
-    User-Agent: "baiduboxapp\r\n"
-    X-T5-Auth: "YTY0Nzlk\r\n\r\n"
-  name: 百度
-  port: 443
-  server: 157.0.148.53
-  type: http
-- Host: down.dingtalk.com
-  
-  
-  early-data-header-name: Sec-WebSocket-Protocol
-  headers:
-  max-early-data: 2048
-  name: 春川
+- alterId: 0
+  cipher: auto
+  name: '春川'
+  network: ws
   port: 8080
   server: www.sdscv.ml
-  servername: www.sdscv.ml
-  tls: true
   type: vmess
-  udp: true
   uuid: 332a7b12-32a8-41d3-997b-765cccf4d3ca
-  alterId: 32
-  cipher: auto
-  skip-cert-verify:  true
-  network: ws
   ws-opts:
-    path: /path
     headers:
       Host: down.dingtalk.com
-    max-early-data: 2048
-    early-data-header-name: Sec-WebSocket-Protocol
+    path: /
+- name: 百度
+  password:
+  port: 443
+  server: 36.152.45.97
+  type: http
 proxy-groups:
 - name: 国内
   proxies:
