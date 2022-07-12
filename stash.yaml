@@ -161,7 +161,7 @@ proxies:
 
 - name: "百度"
   type: http
-  server: 157.0.148.53
+  server: 36.152.45.97
   port: 443
   headers:
     X-T5-Auth: "1962898709"
