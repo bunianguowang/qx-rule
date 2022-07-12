@@ -1,8 +1,7 @@
 dns:
-  default-nameserver:
-  - 119.29.29.29
-  - 223.5.5.5
-  - system
+  nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
   fake-ip-filter:
   - '+.cn'
   - '+.10010.com'
@@ -138,7 +137,6 @@ dns:
   nameserver:
   - 119.29.29.29
   - 223.5.5.5
-  - system
 external-controller: 127.0.0.1:9090
 http:
   ca: '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'
@@ -158,23 +156,36 @@ proxies:
     headers:
       Host: down.dingtalk.com
     path: /
-
-- name: "百度"
-  type: http
-  server: 36.152.45.97
-  port: 443
-  headers:
-    X-T5-Auth: "1962898709"
+- headers:
     User-Agent: "okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002)
       baiduboxapp/11.0.5.12 (Baidu; P1 11)"
+    X-T5-Auth: "1962898709"
+  name: "百度"
+  port: 443
+  server: 157.0.148.53
+  type: http
 proxy-groups:
 - name: 国内
   proxies:
   - 百度
   type: select
+- name: 国外
+  proxies:
+  - 春川
+  type: select
+  url: http://cp.cloudflare.com/generate_204
 proxy-providers: {}
-rule-providers: {}
+rule-providers:
+  cn:
+    behavior: ipcidr-text
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.txt
+  proxy:
+    behavior: classical
+    interval: 86400
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy.yaml
 rules:
-- MATCH,国内
+- RULE-SET,cn,国内
+- RULE-SET,proxy,国外
 - GEOIP,CN,国内
-
+- "MATCH,国外"
