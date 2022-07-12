@@ -158,11 +158,15 @@ proxies:
     headers:
       Host: down.dingtalk.com
     path: /
-- name: 百度
-  password:
-  port: 443
-  server: 36.152.45.97
+
+- name: "百度"
   type: http
+  server: 157.0.148.53
+  port: 443
+  headers:
+    X-T5-Auth: "1962898709"
+    User-Agent: "okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Redmi K30 5G Build/RKQ1.200826.002)
+      baiduboxapp/11.0.5.12 (Baidu; P1 11)"
 proxy-groups:
 - name: 国内
   proxies:
@@ -173,3 +177,4 @@ rule-providers: {}
 rules:
 - MATCH,国内
 - GEOIP,CN,国内
+
