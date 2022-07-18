@@ -75,7 +75,7 @@ proxies:
       Host: down.dingtalk.com
     path: /
     
-    - alterId: 0
+- alterId: 0
   cipher: auto
   name: '日本 东京'
   network: ws
