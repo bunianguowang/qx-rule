@@ -72,6 +72,18 @@ proxies:
     headers:
       Host: down.dingtalk.com
     path: /
+- alterId: 0
+  cipher: auto
+  name: '日本 东京'
+  network: ws
+  port: 8080
+  server: xrb.sdscv.ml
+  type: vmess
+  uuid: 2bb7b473-458f-4da2-9954-35718d07027c  
+  ws-opts:
+    headers:
+      Host: down.dingtalk.com
+    path: /
 proxy-groups:
 - name: 国内
   proxies:
